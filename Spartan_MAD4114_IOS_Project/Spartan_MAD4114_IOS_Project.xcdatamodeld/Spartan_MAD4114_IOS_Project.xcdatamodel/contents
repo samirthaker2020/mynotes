@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G84" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cat1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notes" inverseName="cat2" inverseEntity="Notes" syncable="YES"/>
+    </entity>
+    <entity name="Notes" representedClassName="Notes" syncable="YES" codeGenerationType="class">
+        <attribute name="notecategory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notedate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="notedetail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noteimage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="notetitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cat2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="cat1" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Notes" positionX="-63" positionY="-9" width="128" height="135"/>
+    </elements>
+</model>

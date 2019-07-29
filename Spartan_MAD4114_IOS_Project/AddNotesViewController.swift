@@ -32,6 +32,7 @@ class AddNotesViewController: UIViewController,UIImagePickerControllerDelegate, 
           self.navigationItem.title = "Add Your Notes";
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(savenotes))
         // Do any additional setup after loading the view.
+        
     }
     
     @objc func savenotes() {
@@ -51,6 +52,8 @@ class AddNotesViewController: UIViewController,UIImagePickerControllerDelegate, 
         do{
             try managedObjectContext.save()
             print("saved sucessful")
+            self.navigationController?.popViewController(animated: true)
+            
         }catch let error as NSError{
             print("new entry is  not saved \(error.description)")
         }

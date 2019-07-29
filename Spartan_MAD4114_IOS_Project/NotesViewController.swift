@@ -17,6 +17,10 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var managedObjectContext: NSManagedObjectContext!
     var entries: [NSManagedObject]!
     @IBOutlet weak var tblnotes: UITableView!
+   // var m1:[NSManagedObject]!
+    var t:String?
+    var d:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let i = x
@@ -94,7 +98,9 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "notecell") as! NotesTableViewCell
         
         let m=entries[indexPath.row]
+        
         cell.ntitle.text=m.value(forKey: "notetitle") as? String
+       
         cell.ndetail.text=m.value(forKey: "notedetail") as! String
         
         let entryDate = m.value(forKey: "notedate") as! NSDate
@@ -112,6 +118,50 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150.0
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tblnotes.deselectRow(at: indexPath, animated: true)
+        let entry = self.entries[indexPath.row]
+         print(entry.value(forKey: "notetitle"))
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            
+                let entry = self.entries[indexPath.row]
+                self.managedObjectContext.delete(entry)
+                self.entries.remove(at: indexPath.row)
+                //self.tableView.reloadData()
+                self.tblnotes.deleteRows(at: [indexPath], with: .automatic)
+                do{
+                    try self.managedObjectContext.save()
+                    self.tblnotes.reloadData()
+                }catch _ as NSError{
+                    print("Cannot delete")
+                }
+                
+            
+        }
+        
+        let share = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            // share item at indexPath
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let studentDetailsVC = sb.instantiateViewController(withIdentifier: "editnotes") as! UpdateNotesViewController
+            studentDetailsVC.x = self.trow!
+            //studentDetailsVC.y=m.value(forKey: "notedetail") as! String
+            self.navigationController?.pushViewController(studentDetailsVC, animated: true)
+            
+        }
+        
+        share.backgroundColor = UIColor.lightGray
+        
+        return [delete, share]
     }
 }
 

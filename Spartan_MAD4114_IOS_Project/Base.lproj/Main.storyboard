@@ -143,11 +143,61 @@
                     <connections>
                         <outlet property="tblnotes" destination="Ccc-iz-N6X" id="sxg-E2-ggE"/>
                         <segue destination="0iE-wG-itN" kind="show" identifier="addnotes" id="cby-iO-MtN"/>
+                        <segue destination="RZf-5Y-HGv" kind="show" identifier="editnotes" id="ab8-r8-TXN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBh-1j-9J4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1702.8985507246377" y="-557.14285714285711"/>
+        </scene>
+        <!--Update Notes View Controller-->
+        <scene sceneID="u3D-Z6-Afl">
+            <objects>
+                <viewController storyboardIdentifier="editnotes" id="RZf-5Y-HGv" customClass="UpdateNotesViewController" customModule="Spartan_MAD4114_IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F5S-EO-YKW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMn-Om-ZuK">
+                                <rect key="frame" x="39" y="102" width="322" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Iga-tH-H8B">
+                                <rect key="frame" x="39" y="187" width="322" height="266"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQm-2S-WO0">
+                                <rect key="frame" x="39" y="511" width="322" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcc-xU-2eD">
+                                <rect key="frame" x="127" y="696" width="147" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Choose Image"/>
+                                <connections>
+                                    <action selector="chooseimage:" destination="RZf-5Y-HGv" eventType="touchUpInside" id="Qhd-tO-6zY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ORB-11-HZW"/>
+                    </view>
+                    <connections>
+                        <outlet property="uimage" destination="gQm-2S-WO0" id="kx6-rd-6El"/>
+                        <outlet property="unotedetail" destination="Iga-tH-H8B" id="xD6-jI-6Ye"/>
+                        <outlet property="utitle" destination="EMn-Om-ZuK" id="him-Tj-B39"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rke-BH-Fhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1702.8985507246377" y="225.66964285714283"/>
         </scene>
         <!--Add Notes View Controller-->
         <scene sceneID="X9E-j6-mbK">
@@ -192,6 +242,7 @@
                         <outlet property="image1" destination="BJH-WK-gzc" id="HmU-Wy-V6O"/>
                         <outlet property="ndetail" destination="uf9-UD-dct" id="Deo-45-k3b"/>
                         <outlet property="ntitle" destination="5W6-ry-3pp" id="e5W-Jn-Ene"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toviewc" id="Ksw-ZS-i3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EmK-oA-Qi5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,4 +268,7 @@
             <point key="canvasLocation" x="169.56521739130437" y="-557.14285714285711"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ksw-ZS-i3V"/>
+    </inferredMetricsTieBreakers>
 </document>

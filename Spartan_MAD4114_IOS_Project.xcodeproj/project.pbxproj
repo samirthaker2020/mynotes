@@ -16,6 +16,7 @@
 		EB55C99822EE409000D64950 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55C99722EE409000D64950 /* NotesViewController.swift */; };
 		EB55C99A22EE500900D64950 /* AddNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55C99922EE500900D64950 /* AddNotesViewController.swift */; };
 		EB55C99C22EE6C2100D64950 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55C99B22EE6C2100D64950 /* NotesTableViewCell.swift */; };
+		EB55C99E22EECB4D00D64950 /* UpdateNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55C99D22EECB4D00D64950 /* UpdateNotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EB55C99722EE409000D64950 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		EB55C99922EE500900D64950 /* AddNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotesViewController.swift; sourceTree = "<group>"; };
 		EB55C99B22EE6C2100D64950 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		EB55C99D22EECB4D00D64950 /* UpdateNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				EB55C99722EE409000D64950 /* NotesViewController.swift */,
 				EB55C99922EE500900D64950 /* AddNotesViewController.swift */,
 				EB55C99B22EE6C2100D64950 /* NotesTableViewCell.swift */,
+				EB55C99D22EECB4D00D64950 /* UpdateNotesViewController.swift */,
 			);
 			path = Spartan_MAD4114_IOS_Project;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB55C99822EE409000D64950 /* NotesViewController.swift in Sources */,
+				EB55C99E22EECB4D00D64950 /* UpdateNotesViewController.swift in Sources */,
 				EB55C99A22EE500900D64950 /* AddNotesViewController.swift in Sources */,
 				EB538E3822ED0F9E00A687AE /* Spartan_MAD4114_IOS_Project.xcdatamodeld in Sources */,
 				EB538E3222ED0F9E00A687AE /* ViewController.swift in Sources */,

@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 class UpdateNotesViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     var pcategory:String?
-    var x:Int?
+    var x:NSManagedObject!
     var y:String?
-    var rowno:Int?
+    var rowno:NSManagedObject!
     var extitle:String?
     var exdetails:String?
     
@@ -26,7 +26,13 @@ class UpdateNotesViewController: UIViewController,UIImagePickerControllerDelegat
         super.viewDidLoad()
         if let i=x
         {
-            self.rowno=i
+            self.utitle.text=i.value(forKey: "notetitle") as! String
+            self.y=i.value(forKey: "notetitle") as! String
+            self.unotedetail.text = i.value(forKey: "notedetail") as! String
+            if i.value(forKey: "noteimage") != nil {
+                uimage.image = UIImage.init(data: i.value(forKey: "noteimage") as! Data)
+            }
+            
         }
         if let f=y
         {
@@ -43,7 +49,39 @@ class UpdateNotesViewController: UIViewController,UIImagePickerControllerDelegat
     
     @objc func savenotes()
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Notes")
         
+        fetchRequest.predicate = NSPredicate(format: "notetitle = %@ ",self.y!)
+       
+        
+        do {
+            let results = try context.fetch(fetchRequest) as? [NSManagedObject]
+            if results?.count != 0 { // Atleast one was returned
+                
+                // In my case, I only updated the first item in results
+                results?[0].setValue(self.utitle.text, forKey: "notetitle")
+                results?[0].setValue(self.unotedetail.text, forKey: "notedetail")
+                if uimage != nil {
+                    let photo = self.uimage.image
+                    let data = photo?.pngData()
+                    results?[0].setValue(data, forKey: "noteimage")
+                }
+            }
+        } catch {
+            print("Fetch Failed: \(error)")
+        }
+        
+        do {
+            try context.save()
+            print("sucess")
+             self.navigationController?.popViewController(animated: true)
+            
+        }
+        catch {
+            print("Saving Core Data Failed: \(error)")
+        }
     }
 
     @IBAction func chooseimage(_ sender: Any) {

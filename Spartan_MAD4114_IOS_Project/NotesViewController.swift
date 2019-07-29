@@ -16,6 +16,7 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var passcategory:String?
     var managedObjectContext: NSManagedObjectContext!
     var entries: [NSManagedObject]!
+    var entry:[NSManagedObject]!
     @IBOutlet weak var tblnotes: UITableView!
    // var m1:[NSManagedObject]!
     var t:String?
@@ -125,9 +126,10 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tblnotes.deselectRow(at: indexPath, animated: true)
-        let entry = self.entries[indexPath.row]
-         print(entry.value(forKey: "notetitle"))
+      //  self.tblnotes.deselectRow(at: indexPath, animated: true)
+        
+        
+    
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -151,9 +153,10 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         let share = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
             // share item at indexPath
+            let m=self.entries[indexPath.row]
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let studentDetailsVC = sb.instantiateViewController(withIdentifier: "editnotes") as! UpdateNotesViewController
-            studentDetailsVC.x = self.trow!
+            studentDetailsVC.x = m
             //studentDetailsVC.y=m.value(forKey: "notedetail") as! String
             self.navigationController?.pushViewController(studentDetailsVC, animated: true)
             
